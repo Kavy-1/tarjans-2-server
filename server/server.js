@@ -1,4 +1,5 @@
 const express = require( 'express' );
+const bodyParser = require( 'body-parser' );
 
 console.log( 'look at me, im a new server' );
 
@@ -7,6 +8,9 @@ const app = express();
 
 // Server static files from server/public folder
 app.use( express.static( 'server/public' ) );
+
+// Set up body parser to read request JSOn 
+app.use( bodyParser.urlencoded( { extended: true } ) );
 
 // Define a list of activities for me
 let activities = [
@@ -28,11 +32,21 @@ let activities = [
 ];
 
 //ENDPOINT
-// Get /activities
+// GET /activities
 app.get( `/activities`, function( req, res ){
     // Send back the array of activities
     res.send( activities );
-} );
+} )
+
+//ENDPOINT
+// POST /activities
+// create a new activity and add it to our activities array
+app.post( `/activities`, function( req, res ){
+    console.log( 'I got a request!', req.body );
+    let newActivity = req.body;
+    activities.push( newActivity );
+    res.send( newActivity );
+} )
 
 //---------------------------------------------------------------
 // Listen for request

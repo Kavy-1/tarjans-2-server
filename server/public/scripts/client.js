@@ -26,4 +26,17 @@ function onReady(){
             console.log( 'Error!', errorInfo );
             alert( 'Server is down, try again later.' );
     } ); // end of AJAX .then()
+
+
+    // Handle new activity form
+    $( document ).on( 'click', '#submitButton', onSubmit );
 } // end onReady
+
+function onSubmit(){
+    let newActivity = {
+        activity: $( '#activityInput' ).val(),
+        type: $( '#typeInput' ).val(),
+        isScreenTime: $( '#isScreenTimeInput').is( ':checked' )
+    };
+    console.log( 'new activity object', newActivity );
+} // end onSubmit
