@@ -4,8 +4,13 @@ $( document ).ready( onReady );
 
 function onReady(){
     console.log( 'I\'m ready' );
+    refreshActivities();
+    // Handle new activity form
+    $( document ).on( 'click', '#submitButton', onSubmit );
+} // end onReady
 
-    // AJAX!!!!!
+function refreshActivities(){
+    // AJAX!!!!
     $.ajax( {
         url:'/activities',
         method: 'GET'
@@ -13,6 +18,7 @@ function onReady(){
         console.log( 'We got a response!', activities );
 
         // Render the activities
+        $( 'tbody' ).empty();
         for( let activity of activities ){
             $( 'tbody' ).append( `
                 <tr>
@@ -26,11 +32,7 @@ function onReady(){
             console.log( 'Error!', errorInfo );
             alert( 'Server is down, try again later.' );
     } ); // end of AJAX .then()
-
-
-    // Handle new activity form
-    $( document ).on( 'click', '#submitButton', onSubmit );
-} // end onReady
+} // end refreshActivities
 
 function onSubmit(){
     let newActivity = {
@@ -39,4 +41,19 @@ function onSubmit(){
         isScreenTime: $( '#isScreenTimeInput').is( ':checked' )
     };
     console.log( 'new activity object', newActivity );
+
+    // POST /activities with our newActivity object
+    $.ajax( {
+        url: '/activities',
+        method: 'POST',
+        data: newActivity
+    } ).then( function( response ){
+        console.log( 'Created an activity!', response )
+
+        console.log( 'time to refresh' );
+        refreshActivities();
+        
+    } ).catch( function( errorInfo ){
+        console.log( 'Error', errorInfo )
+    } ) // end of AJAX .then()
 } // end onSubmit
