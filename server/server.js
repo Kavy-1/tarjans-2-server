@@ -8,7 +8,7 @@ const app = express();
 // Server static files from server/public folder
 app.use( express.static( 'server/public' ) );
 
-// Define a list of activities for my kid
+// Define a list of activities for me
 let activities = [
     {
         activity: 'Typing practice',
