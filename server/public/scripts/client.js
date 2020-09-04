@@ -36,8 +36,8 @@ function refreshActivities(){
 
 function onSubmit(){
     let newActivity = {
-        activity: $( '#activityInput' ).val(),
-        type: $( '#typeInput' ).val(),
+        activity: $( '#activityInput' ).val( '' ),
+        type: $( '#typeInput' ).val( '' ),
         isScreenTime: $( '#isScreenTimeInput').is( ':checked' )
     };
     console.log( 'new activity object', newActivity );
