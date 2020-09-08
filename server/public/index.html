@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./styles/style.css" rel="stylesheet" />
-    <script src="./vendors/jquery.js"></script>
-    <script src="./scripts/client.js"></script>
-    <title>My Awesome Node App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Awesome Node App</title>
+  <link rel="stylesheet" href="./styles/style.css">
+  <script src="./vendors/jquery.js"></script>
+  <script src="./scripts/client.js"></script>
 </head>
 <body>
-    <h1>Activities for Ethan</h1>
+  <h1>Activities for Ari</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Activity</th>
-                <th>Screen Time?</th>
-                <th>Type</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-        </tbody>
-    </table>
+  <!--
+  Here's what my data looks like
+  {
+    activity: "Typing practice",
+    isScreenTime: true,
+    type: "Mind Exercises"
+  },
+  -->
+  <table>
+    <thead>
+      <tr>
+        <th>Activity</th>
+        <th>Screen Time?</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
 
-    <h2>Create A New Activity</h2>
-    <input id="activityInput" placeholder="Activity Name" />
-    <input id="typeInput" placeholder="Activity Type" />
-    <label>
-        Is Screen Time?
-        <input type="checkbox" id="isScreenTimeInput" />
-    </label>
-    <button id="submitButton">Create!</button>
-    
+  <h2>Create a new activity</h2>
+  <input id="activityInput" placeholder="Activity Name" />
+  <input id="typeInput" placeholder="Activity Type" />
+  <label>
+    Is screen Time?
+    <input type="checkbox" id="isScreenTimeInput" />
+  </label>
+  <button id="submitBtn">Create!</button>
 </body>
 </html>
